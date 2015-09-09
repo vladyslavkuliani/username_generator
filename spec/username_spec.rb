@@ -130,9 +130,9 @@ end
 
 describe "#generate_username" do
 
-  it "it appends a username count to reused usernames" do
+  it "it appends a username count when the username already exists" do
     expect( generate_username("King", "Kong", 1980) ).to eq "kkong80"
-    expect( generate_username("King", "Kong", 1980) ).to end_with(/_\d+/)
+    expect( generate_username("King", "Kong", 1980) ).to end_with("_1")
   end
 
   it "it increments usernames that are already in use (uniqueness constraint)" do
