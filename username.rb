@@ -1,21 +1,7 @@
 # Make sure to run the tests in your /spec folder
-# Run `rspec /spec/username_spec_level_1.rb` to get started.
+# Run `rspec /spec/username_spec.rb` to get started.
 
-# LEVEL 1
-def generate_username(name)
-  #remove whitespace & downcase
-  name[0].strip.downcase
-end
-
-# LEVEL 2
-def generate_username(first, last)
-  return nil if last.empty? || first.empty?
-  first = first.gsub(/[^A-Za-z]/, '')
-  last = last.gsub(/[^A-Za-z]/, '')
-  (first[0] + last).downcase
-end
-
-# LEVEL 3
+# Level 1
 def format_name(first, last)
   return nil if last.empty? || first.empty?
   first = first.gsub(/[^A-Za-z]/, '')
@@ -28,7 +14,7 @@ def format_year(year)
   year_string.length == 4 ? year_string[2,2] : nil
 end
 
-def generate_username(first, last, year)
+def build_username(first, last, year)
   name = format_name(first, last)
   return nil if name.nil?
 
@@ -39,29 +25,16 @@ def generate_username(first, last, year)
 end
 
 
-# LEVEL 4
+# LEVEL 2
 $user_types = ["user", "seller", "manager", "admin"]
 
 def check_privilege(type=0)
-  $user_types[type]
+  $user_types[type] || $user_types.last
 end
 
 def user_type_prefix(level)
   level > 0 ? check_privilege(level) + "-" : ""
 end
-
-def generate_username(first, last, year, level=0)
-  name = format_name(first, last)
-  return nil if name.nil?
-
-  yy = format_year(year)
-  return nil if yy.nil?
-
-  user_type_prefix(level) + name + yy
-end
-
-
-# LEVEL 5
 
 def build_username(first, last, year, level=0)
   name = format_name(first, last)
@@ -73,6 +46,8 @@ def build_username(first, last, year, level=0)
   user_type_prefix(level) + name + yy
 end
 
+
+# LEVEL 3
 $user_counts = {} # Hash of usernames, temporary storage
 # Key: username string. (Keys are always unique).
 # Value: username count.
