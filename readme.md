@@ -33,21 +33,17 @@ gem install rspec
 You might get an error here, but we believe in you. Fix it.
 
 ### Test Driven Development -- Red, Green, Refactor.
-Take a look inside the `/spec` folder, and you'll see our test suite broken up into 5 files.
-- /spec/username_spec_level_1.rb
-- /spec/username_spec_level_2.rb
-- /spec/username_spec_level_3.rb
-- /spec/username_spec_level_4.rb
-- /spec/username_spec_level_5.rb
-
-For each level: Make sure the tests are failing (red). Pass the tests (green). Then, refactor your code.
+Take a look inside the `/spec` folder, and you'll see our test suite broken up into 2 files.
+- /spec/the_warmup_spec.rb
+- /spec/username_spec.rb
+>>>>>>> solution
 
 To run the tests for each level, type the following in the command line:
 
 ```bash
-rspec spec/username_spec_level_1.rb
+rspec spec/the_warmup_spec.rb
 # or
-rspec spec/username_spec_level_1.rb --format documentation
+rspec spec/the_warmup_spec.rb --format documentation
 ```
 
 You should see the following output:
@@ -79,54 +75,33 @@ You should see the following output:
 
 
 ##Challenges
+Run: `rspec spec/username_spec.rb`
 
 #### Level 1
-Run: `rspec spec/username_spec_level_1.rb`
+Create a function called `format_name` that accepts a user's first_name and last_name and returns a lowercase string that joins the first character of the first_name with the last_name.
 
-Create a function `generate_username` that accepts a users's first name  
-* return only the first character
-* make it lowercase
+Create a function called `format_year` that accepts a four digit integer representing the year (`YYYY`) and parses out the last two digits of the year and returns a a _string_ (`"YY"`).
+
+Create a function called `build_username` that takes a user's first_name, last_name, and birth_year, and returns a string with the following format: it starts with the first letter of the first_name, followed by the last_name, followed by the last two digits of the birth_year.
+
 
 #### Level 2
-Run: `rspec spec/username_spec_level_2.rb`
-
-Modify `generate_username` to accept a user's first and last name  
-* return the first char of the first name + the last name
-* make it lowercase
-* remove leading and trailing spaces
-* reject invalid input: e.g. cases like ""
-* STRETCH: ensure that only alphabet characters are allowed 
-
-#### Level 3
-Run: `rspec spec/username_spec_level_3.rb`
-
-Modify `generate_username` to take three arguments (first_name, last_name and birth_year):  
-* combine them into one string, e.g. "smith1980"
-* but use only the last two digits of birth_year, e.g. "smith80"
-* and reject invalid birth_year input: e.g. cases like 80, 198, 20111
-
-#### Level 4
-Run: `rspec spec/username_spec_level_4.rb`
-
-Create a function called `check_privilege` that takes a level (integer) and returns a user type (string).  
+Create a function called `check_privilege` that takes a level (integer) and returns the corresponding user_type (string).  
 * Allocate privilege using the following table:
-    * 0 --> "user"
+    * 0 --> "user" (the default privilege level)
     * 1 --> "seller"
     * 2 --> "manager"
     * 3 --> "admin"
-* return a string indicating the corresponding privilege level
-* make the privilege level 0 by default
-* STRETCH: modify `generate_username` so that it creates accounts that specify user privileges
-    * Prefix usernames with "admin-", "seller-", "manager-" (e.g. "seller-jdoe78").
-    * Do not add the "user-" prefix to any username.
 
-#### Level 5
-Run: `rspec spec/username_spec_level_5.rb`
+Create a function called `user_type_prefix` that takes a level (integer) and returns the corresponding prefix, e.g. "admin-", "manager-", "seller-". See the tests for more details.
 
-Modify `generate_username` to ensure username uniqueness  
-* come up with a simple way to "save" or "cache" your usernames as you create them
-* if a username already exists, append "_1"
-    * STRETCH: increment n: e.g.  jdoe78, jdoe78_1,  jdoe78_2, bbunny60, bbunny60_1
+Update your `build_username` function to use prefixes. It should now accept a privilege_level (in addition to the other parameters), and tack it on to the beginning of the username (e.g. "seller-jdoe78"). See the tests for more details.
+
+#### Level 3
+Create a function called `generate_username` that has four arguments (first_name, last_name, birth_year, privilege_level) and returns a _unique_ username. Come up with a simple way to store usernames as you create them. 
+
+STRETCH: If a username already exists, append "_1". Then, increment the counter each time you reuse the username (e.g. "jdoe78", "jdoe78\_1", "jdoe7\_2", "bbunny60", "bbunny60\_1").
+>>>>>>> solution
 
 #### BONUS -- Command-line inputs
 * OPTION 1 -- Interactively get user input from the command line and output a username to the console. I.e. when I run `ruby username.rb` I should be prompted (from the command line) for my name, birth year, etc.
