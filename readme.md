@@ -45,35 +45,44 @@ rspec spec/the_warmup_spec.rb
 rspec spec/the_warmup_spec.rb --format documentation
 ```
 
-You should see the following output:
+You should see roughly the following output:
 
-    FF --> 2 tests failed
+    FFFFFFFF ---> 8 failed tests ("F"), 0 passed tests (".")
     Failures:
-      1) #generate_username, level 1 returns the first letter of first_name
-         Failure/Error: expect( generate_username("ilias") ).to eq "i"
-         ArgumentError:
-           wrong number of arguments (1 for 0)
-         # ./username.rb:1:in `generate_username'
-         # ./spec/username_spec_level_1.rb:8:in `block (2 levels) in <top (required)>'
-      2) #generate_username, level 1 lowercases the first letter of first_name
-         Failure/Error: expect( generate_username("Ilias") ).to eq "i"
-         ArgumentError:
-           wrong number of arguments (1 for 0)
-         # ./username.rb:1:in `generate_username'
-         # ./spec/username_spec_level_1.rb:14:in `block (2 levels) in <top (required)>'
+
+      1) #say_hello returns 'hello'
+         Failure/Error: expect( say_hello ).to eq "hello"
+           
+           expected: "hello"
+                got: "hi"
+           
+           (compared using ==)
+         # ./spec/the_warmup_spec.rb:8:in `block (2 levels) in <top (required)>'
+    
+    Finished in 0.0028 seconds (files took 0.08831 seconds to load)
+    8 examples, 8 failures
+
+    Failed examples:
+    rspec ./spec/the_warmup_spec.rb:7 # #say_hello returns 'hello'
+
 
 ####Hooray!
 * The first tests are failing. _We're seeing **RED**._
 * Now we need to write code to pass the tests and _turn them **GREEN**_. 
 * When all the tests are green, we're ready to _stop and **REFACTOR**_!
 
+## Warmup Challenge
+Run: `rspec spec/the_warmup_spec.rb`
+
+Code your solutions in `warmup.rb`.
+
 **Tips:**
 
-* Run rspec frequently, and test your work.
+* Pay close attention to the rspec output in your terminal
+* Run your tests frequently and read the output carefully.
 * BE *VERY CAREFUL* to use the correct function name.
 
-
-##Challenges
+##Username Challenges
 Run: `rspec spec/username_spec.rb`
 
 #### Level 1
